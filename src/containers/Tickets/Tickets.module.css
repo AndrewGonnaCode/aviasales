@@ -1,0 +1,14 @@
+.Tickets {
+    display: flex;
+    flex-direction: column;
+    width: 66.18%;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.Ticket {
+
+}

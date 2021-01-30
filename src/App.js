@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import Filters from "./containers/Filters/Filters";
 import './App.css';
+import logo from './images/logo.svg'
+import Tickets from "./containers/Tickets/Tickets";
+import {getSearchId} from "./store/actions/tickets";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+    componentDidMount() {
+
+    }
+
+
+    render() {
+        return (
+            <div className='App'>
+                <div className='container'>
+                    <div className="logo">
+                        <img src={logo} alt="Логотип"/>
+                    </div>
+                    <Filters/>
+                    <Tickets/>
+                </div>
+            </div>
+        )
+
+    }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

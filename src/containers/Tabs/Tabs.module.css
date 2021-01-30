@@ -1,0 +1,43 @@
+.Tabs {
+    display: flex;
+    height: 50px;
+}
+
+.Element {
+    flex-grow: 1;
+    display: flex;
+
+    border: 1px solid #DFE5EC;
+    background-color: #FFFFFF;
+}
+
+.Element:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.Element:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.Element:hover:not(.Checked) {
+    cursor: pointer;
+}
+
+.Checked {
+    background-color: #2196F3;
+    color: #FFFFFF;
+}
+
+.Element p {
+    margin: auto;
+
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}

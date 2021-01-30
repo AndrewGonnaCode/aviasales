@@ -1,0 +1,23 @@
+.Filters {
+    width: 30.52%;
+    padding: 20px 0;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.Title {
+    font-family: "Open Sans", sans-serif;
+    padding: 0 0 10px 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #4A4A4A;
+}
+
+.Column {
+
+}
