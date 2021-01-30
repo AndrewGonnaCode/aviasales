@@ -1,18 +1,21 @@
-import {CHANGE_FIlTER, CHANGE_TABS, RENDER_TICKETS, GET_SEARCH_ID} from "../actions/actionTypes";
+import {
+    CHANGE_FIlTER,
+    CHANGE_TABS,
+    CHANGE_SEARCHID,
+    CHANGE_TICKETS
+} from "../actions/actionTypes";
 
 const initalState = {
     filters: [
         {
             id: 1,
             text: 'Все',
-            selected: false,
             checked: true,
             handler: () => true,
         },
         {
             id: 2,
             text: 'Без пересадок',
-            selected: false,
             checked: false,
             handler: (ticket) => {
                 return ticket.segments[0].stops.length === 0;
@@ -21,7 +24,6 @@ const initalState = {
         {
             id: 3,
             text: '1 пересадка',
-            selected: false,
             checked: false,
             handler: (ticket) => {
                 return ticket.segments[0].stops.length === 1;
@@ -30,7 +32,6 @@ const initalState = {
         {
             id: 4,
             text: '2 пересадки',
-            selected: false,
             checked: false,
             handler: (ticket) => {
                 return ticket.segments[0].stops.length === 2;
@@ -39,7 +40,6 @@ const initalState = {
         {
             id: 5,
             text: '3 пересадки',
-            selected: false,
             checked: false,
             handler: (ticket) => {
                 return ticket.segments[0].stops.length === 3;
@@ -65,26 +65,29 @@ const initalState = {
         }
     ],
     tickets: [],
-    searchId: 0
+    searchId: 0,
+    activeTickets: [],
+    loading: true
 };
 
 export default function tickets(state = initalState, action) {
     switch(action.type) {
+        case CHANGE_SEARCHID:
+            return {
+                ...state, searchId: action.payload, loading: true
+            };
+        case CHANGE_TICKETS:
+            return {
+              ...state, tickets: action.payload, loading: false
+            };
         case CHANGE_TABS:
             return {
                 ...state, tabs: action.tabs
             };
-        case RENDER_TICKETS:
-            return {
-                ...state, tickets: action.tickets, searchId: action.searchId
-            };
         case CHANGE_FIlTER:
+            let tickets = [...state.tickets];
             return {
-                ...state, filters: action.filters, tickets: action.tickets
-            };
-        case GET_SEARCH_ID:
-            return {
-              ...state, searchId: action.searchId
+                ...state, filters: action.payload, tickets
             };
         default:
             return state;
