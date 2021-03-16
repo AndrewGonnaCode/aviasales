@@ -42,7 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "heroku": "^7.50.0"
-  }
+  "devDependencies": {}
 }
