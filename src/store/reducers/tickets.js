@@ -2,7 +2,7 @@ import {
     CHANGE_FIlTER,
     CHANGE_TABS,
     CHANGE_SEARCHID,
-    CHANGE_TICKETS
+    CHANGE_TICKETS, ADD_TICKETS
 } from "../actions/actionTypes";
 
 const initalState = {
@@ -62,12 +62,19 @@ const initalState = {
             sort: (tickets) => {
                 return tickets.sort((a, b) => a.segments[0].duration - b.segments[0].duration);
             }
+        },
+        {
+            id: 3,
+            text: 'Оптимальный',
+            checked: false,
+            sort: tickets => tickets
         }
     ],
     tickets: [],
     searchId: 0,
-    activeTickets: [],
-    loading: true
+    loading: true,
+    amountTickets: 5
+
 };
 
 export default function tickets(state = initalState, action) {
@@ -89,6 +96,10 @@ export default function tickets(state = initalState, action) {
             return {
                 ...state, filters: action.payload, tickets
             };
+        case ADD_TICKETS:
+            return {
+                ...state, amountTickets: state.amountTickets + action.payload
+            }
         default:
             return state;
     }

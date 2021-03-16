@@ -9,6 +9,7 @@ class App extends Component {
     render() {
         return (
             <div className='App'>
+                <p><a name="top"></a></p>
                 <div className='container'>
                     <div className="logo">
                         <img src={logo} alt="Логотип"/>
@@ -16,6 +17,7 @@ class App extends Component {
                     <Filters/>
                     <Tickets/>
                 </div>
+                    <a className='scroll-to-top' href="#top"></a>
             </div>
         )
     }

@@ -6,7 +6,7 @@
     background: #FFFFFF;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     cursor: pointer;
     transition: all .2s ease-in;
 }
@@ -57,9 +57,6 @@
     margin-right: 20px;
 }
 
-.segment__route {
-
-}
 
 .rout {
     display: flex;
@@ -142,4 +139,53 @@
     align-items: center;
 
     color: #4A4A4A;
+}
+
+@media (max-width: 633px) {
+    .ticket {
+        padding: 10px;
+    }
+
+    .ticket__header {
+        margin-bottom: 10px;
+    }
+
+    .ticket__price {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .route__points {
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    .route__time {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .length__title {
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    .length__time {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .stop__title {
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    .stop__points {
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
+
+@media (max-width: 415px) {
+
 }

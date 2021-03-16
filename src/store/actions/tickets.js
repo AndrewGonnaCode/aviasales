@@ -2,7 +2,7 @@ import {
     CHANGE_FIlTER,
     CHANGE_TABS,
     CHANGE_SEARCHID,
-    CHANGE_TICKETS, CHANGE_ACTIVE_TICKETS
+    CHANGE_TICKETS, CHANGE_ACTIVE_TICKETS, ADD_TICKETS
 } from "./actionTypes";
 import axios from "axios";
 
@@ -15,7 +15,7 @@ export function changeSeacrhId() {
 }
 
 export function subscribe(searchId) {
-    const s = async dispatch => {
+    const thunkCb = async dispatch => {
         try {
             let response = await axios.get(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
             const data = response.data;
@@ -24,13 +24,13 @@ export function subscribe(searchId) {
                 dispatch({type: CHANGE_TICKETS, payload: data.tickets});
                 return;
             }
-            s(dispatch);
+            thunkCb(dispatch);
         } catch (e) {
             const newSearchId = await axios.get(`https://front-test.beta.aviasales.ru/search`);
             dispatch({type: CHANGE_SEARCHID, payload: newSearchId.data.searchId});
         }
     };
-    return s;
+    return thunkCb;
 }
 
 export function changeFilterHandler(event, id) {
@@ -40,7 +40,6 @@ export function changeFilterHandler(event, id) {
         if (!filters.find(filter => filter.checked)) {
             filters[0].checked = true;
         }
-        console.log('filter');
         dispatch({type:CHANGE_FIlTER, payload: filters});
     }
 }
@@ -54,5 +53,12 @@ export function tabsChange(id) {
             type: CHANGE_TABS,
             tabs
         })
+    }
+}
+
+export const showTickets = (num) => {
+    return {
+        type: ADD_TICKETS,
+        payload: num
     }
 }

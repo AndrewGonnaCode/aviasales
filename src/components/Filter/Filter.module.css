@@ -84,3 +84,9 @@
       border-radius: 50%;
       background: white;*/
 }
+
+@media (max-width: 960px) {
+    .Filter {
+        width: 170px;
+    }
+}

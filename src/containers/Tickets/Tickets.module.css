@@ -4,6 +4,10 @@
     width: 66.18%;
 }
 
+.AddBtn {
+    margin: 20px 0;
+}
+
 .Container {
     display: flex;
     flex-direction: column;
@@ -11,4 +15,10 @@
 
 .Ticket {
 
+}
+
+@media (max-width: 960px) {
+    .Tickets {
+        width: 100%;
+    }
 }

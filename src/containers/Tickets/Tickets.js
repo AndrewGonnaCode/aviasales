@@ -4,6 +4,8 @@ import classes from './Tickets.module.css';
 import Tabs from "../Tabs/Tabs";
 import {changeSeacrhId, subscribe} from "../../store/actions/tickets";
 import Ticket from '../../components/Ticket/Ticket';
+import AddBtn from "../../components/AddBtn/AddBtn";
+import Loader from "../../components/Loader/Loader";
 
 function checkTicket(filters, ticket) {
     let value = false;
@@ -22,16 +24,13 @@ class Tickets extends Component {
         return tickets.map((ticket, id) => <Ticket key={id} ticket={ticket}/>);
     };
 
-    getTickets = (value) => {
-        const tickets = this.props.tickets;
-        const tabs = this.props.tabs;
-        const filters = this.props.filters;
-
+    getTickets = () => {
+        const {tickets, tabs, filters, amountTickets} = this.props;
 
         let validTickets = [];
         let index = 0;
 
-        while(validTickets.length !== value) {
+        while(validTickets.length !== amountTickets && index < tickets.length) {
             if (checkTicket(filters, tickets[index])) {
                 validTickets.push(tickets[index]);
             }
@@ -53,7 +52,6 @@ class Tickets extends Component {
     }
 
     render() {
-        console.log('render', this.props.tickets);
         return (
             <div className={classes.Tickets}>
                     <Tabs />
@@ -61,10 +59,16 @@ class Tickets extends Component {
                     <div className={classes.Container}>
                         {
                             this.props.loading ?
-                                <p>Загрузка...</p>
+                                <Loader />
                                 :
-                                this.renderTickets()
+                                <>
+                                    {this.renderTickets()}
+                                    <div className={classes.AddBtn}>
+                                        <AddBtn />
+                                    </div>
+                                </>
                         }
+
                     </div>
             </div>
             )
@@ -78,8 +82,8 @@ function mapStateToProps(state) {
         searchId: state.tickets.searchId,
         loading: state.tickets.loading,
         tabs: state.tickets.tabs,
-        filters: state.tickets.filters
-
+        filters: state.tickets.filters,
+        amountTickets: state.tickets.amountTickets
     }
 }
 

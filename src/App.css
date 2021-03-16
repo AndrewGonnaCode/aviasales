@@ -18,3 +18,34 @@
     top: 40px;
     left: 48%;
 }
+
+@media (max-width: 960px) {
+    .container {
+        max-width: 754px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+}
+
+@media (max-width: 633px) {
+    .container {
+        padding: 150px 50px 120px;
+    }
+}
+
+.scroll-to-top {
+    display: block;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: url("./images/back.svg") no-repeat center;
+    transform: rotate(90deg);
+    bottom: 20px;
+    right: 50px;
+    transition: all 1s ease;
+
+}

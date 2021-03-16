@@ -1,0 +1,17 @@
+.AddBtn {
+    padding: 15px 20px;
+    background-color: #2196F3;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-align:center;
+    width: 100%;
+    outline: none;
+    border: none;
+    line-height: 20px;
+    cursor: pointer;
+}
